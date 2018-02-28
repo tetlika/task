@@ -1,0 +1,20 @@
+version: '2'
+services:
+
+  worker:
+    build: worker
+    depends_on:
+      - consul
+    
+  consul:
+    build: consul
+    ports:
+      - "8500:8500"
+
+  nginx:
+    build: nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - consul
+      - worker
