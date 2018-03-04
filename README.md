@@ -39,5 +39,5 @@ python3 /opt/healcheck.py
 Source code of worker is located in worker/CurrencyService folder, and is already modified with 8 multiplier. Compilation happens when you run run.sh script.
 See worker/Dockerfile for details.
 ## Task 5
-Failover required in task happens automatically - see haproxy_backup/entrypoint.sh script for details. Backbone haproxy takes care of the rest job.
+Failover required in task happens automatically - see haproxy_backup/entrypoint.sh script for details. Backbone haproxy takes care of the rest job. To test failover - just kill haproxy container and haproxy_backup container will start handling traffic. 
 
