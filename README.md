@@ -13,6 +13,10 @@ This code spans up environment using docker-compose for orchestration. To spawn 
 ```
 
 Where N is number of workers you want to spawn, e.g. 3, 4, 1, etc ...
+After run.sh script finishes working it will run stuff in foreground (you can change it), and service will be available by following url:
+```
+http://localhost/currency?price=2
+```
 
 After launching environment you will get following containers:
 ```
