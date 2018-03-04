@@ -11,10 +11,24 @@ services:
     ports:
       - "8500:8500"
 
-  nginx:
-    build: nginx
-    ports:
-      - "80:80"
+  haproxy:
+    build: haproxy
     depends_on:
       - consul
       - worker
+  
+  haproxy_backup:
+    build: haproxy_backup
+    depends_on:
+      - consul
+      - worker
+
+  haproxy_front:
+    build: haproxy_front
+    depends_on:
+      - consul
+      - worker
+      - haproxy
+      - haproxy_backup
+    ports:
+      - "80:80"

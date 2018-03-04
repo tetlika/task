@@ -1,0 +1,11 @@
+defaults
+       # never fail on address resolution
+       default-server init-addr last,libc,none
+
+listen infare
+       bind 0.0.0.0:80
+       mode http
+       balance roundrobin
+       option httpchk GET /currency?price=2
+       {{range ls "backends/"}}
+       server {{.Key}} {{.Key}}:8080 check inter 3000 rise 2 fall 3 maxconn 1024{{ end }}
