@@ -8,8 +8,6 @@ services:
     
   consul:
     build: consul
-    ports:
-      - "8500:8500"
 
   haproxy:
     build: haproxy
