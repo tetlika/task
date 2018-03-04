@@ -9,10 +9,10 @@ Local port 80 not busy on local machine.
 This code spans up environment using docker-compose for orchestration. To spawn environment just run the run.sh script:
 
 ```
-./run.sh <N>
+./run.sh N
 ```
 
-Where "<N>" is number of workers you want to spawn, e.g. 3, 4, 1, etc ...
+Where N is number of workers you want to spawn, e.g. 3, 4, 1, etc ...
 
 After launching environment you will get following containers:
 ```
