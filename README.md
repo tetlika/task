@@ -39,6 +39,7 @@ Healthcheck script is located in haproxy/healcheck.py file. To run it - login to
 ```
 python3 /opt/healcheck.py
 ```
+This script also performs cleanup of failed backends from consul kv registry.
 ## Task 4
 Source code of worker is located in worker/CurrencyService folder, and is already modified with 8 multiplier. Compilation happens when you run run.sh script.
 See worker/Dockerfile for details.
