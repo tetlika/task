@@ -12,10 +12,11 @@ for BACKEND in BACKENDS:
     if BACKEND_CLEAN:
         try:
             response = requests.get('http://%s:8080/currency?price=2' % BACKEND_CLEAN)
+            if response.json() == CORRECT_RESPONSE:
+                print("Backend %s gave correct response: % s" % (BACKEND_CLEAN, CORRECT_RESPONSE))
+            else:
+                print("Backend %s failed to give correct response: %s, instead it returned: %s " % (BACKEND_CLEAN, CORRECT_RESPONSE, response.json()))
         except:
             print("Backend %s failed" % BACKEND_CLEAN)
-
-        if response.json() == CORRECT_RESPONSE:
-            print("Backend %s gave correct response: % s" % (BACKEND_CLEAN, CORRECT_RESPONSE))
-        else:
-            print("Backend %s failed to give correct response: %s, instead it returned: %s " % (BACKEND_CLEAN, CORRECT_RESPONSE, response.json()))
+            print("Cleaning up failed backend %s from registry" % BACKEND_CLEAN)
+            print(str(subprocess.check_output("consul kv delete -http-addr=consul:8500 backends/%s" % BACKEND_CLEAN, shell=True)))
